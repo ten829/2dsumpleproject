@@ -14,6 +14,8 @@ public class chacer : MonoBehaviour
         if(TryGetComponent(out agent))
         {
             agent.updateUpAxis = false;
+            agent.updateRotation = false;
+            agent.destination = transform.position;
         }
     }
 

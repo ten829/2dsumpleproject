@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -136,3 +136,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectprefab: {fileID: 7226888052703040409, guid: 7ec363c8df426644ea85f8d6d570561c, type: 3}
   player: {fileID: 0}
+  bulletpower: 10
