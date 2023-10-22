@@ -15,6 +15,8 @@ public class enemycontroller : MonoBehaviour
     private float moveduration;
     [SerializeField]
     private Ease ease;
+    [SerializeField]
+    public int enemyattackpower = 5;
     // Start is called before the first frame update
     void Start()
     {
