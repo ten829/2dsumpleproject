@@ -8,6 +8,17 @@ public class stepenemycontroller : MonoBehaviour
     private float moveSpeed = 2.0f;
     float horizontalInput = 1.0f;
     private Rigidbody2D rb;
+
+    [SerializeField]
+    private int enemyHP;
+    [SerializeField]
+    private GameObject Fireeffectprefab;
+    [SerializeField]
+    private GameObject Iceeffectprefab;
+    [SerializeField]
+    public int enemyattackpower = 5;
+    [SerializeField]
+    private elementtype enemyelementtype;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +33,7 @@ public class stepenemycontroller : MonoBehaviour
         bool enemyright = stepenemy.isOnGround;
         rb.velocity = new Vector2(moveSpeed * horizontalInput, rb.velocity.y);
         if (enemyright != true)
-        {
-            Debug.Log("反転");
+        { 
             horizontalInput *= -1;
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
@@ -32,5 +42,27 @@ public class stepenemycontroller : MonoBehaviour
         }
 
     }
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out bulletcontroller bullet))
+        {
+            if (bullet.Elementtype == enemyelementtype)
+            {
+                enemyHP -= bullet.bulletpower;
+            }
+            else
+            {
+                enemyHP -= 2 * bullet.bulletpower;
+                Debug.Log("弱点");
+            }
+            if (enemyHP <= 0)
+            {
+                GameObject effect = Instantiate(bullet.Elementtype == elementtype.fire ? Fireeffectprefab : Iceeffectprefab, transform.position, Quaternion.identity);
+                Destroy(effect, 1.0f);
+                Destroy(gameObject);
+            }
+
+        }
+    }
+
 }

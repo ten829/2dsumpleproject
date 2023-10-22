@@ -8,7 +8,9 @@ public class enemycontroller : MonoBehaviour
     [SerializeField]
     private int enemyHP;
     [SerializeField]
-    private GameObject effectprefab;
+    private GameObject Fireeffectprefab;
+    [SerializeField]
+    private GameObject Iceeffectprefab;
     [SerializeField]
     private float moveposition;
     [SerializeField]
@@ -17,6 +19,8 @@ public class enemycontroller : MonoBehaviour
     private Ease ease;
     [SerializeField]
     public int enemyattackpower = 5;
+    [SerializeField]
+    private elementtype enemyelementtype;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +40,18 @@ public class enemycontroller : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out bulletcontroller bullet))
         {
-            enemyHP -= bullet.bulletpower;
+            if(bullet.Elementtype == enemyelementtype)
+            {
+                enemyHP -= bullet.bulletpower;
+            }
+            else
+            {
+                enemyHP -= 2 * bullet.bulletpower;
+                Debug.Log("弱点");
+            }
             if(enemyHP <= 0)
             {
-                GameObject effect = Instantiate(effectprefab, transform.position, Quaternion.identity);
+                GameObject effect = Instantiate(bullet.Elementtype == elementtype.fire ? Fireeffectprefab: Iceeffectprefab, transform.position, Quaternion.identity);
                 Destroy(effect, 1.0f);
                 Destroy(gameObject);
             }

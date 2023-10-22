@@ -198,9 +198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444d1d0e660784205b3a34bcce0a1056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: 5
-  effectprefab: {fileID: 0}
+  enemyHP: 100
+  Fireeffectprefab: {fileID: 3802302459956397560, guid: b3416c8b2e3c7804b8c061dc4a36fc43, type: 3}
+  Iceeffectprefab: {fileID: 4425544509863617631, guid: d552e90926df03a4596ccf40851b2dce, type: 3}
   moveposition: 0
   moveduration: 0
   ease: 0
   enemyattackpower: 5
+  enemyelementtype: 1

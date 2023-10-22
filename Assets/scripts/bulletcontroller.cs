@@ -8,7 +8,10 @@ public class bulletcontroller : MonoBehaviour
     private GameObject effectprefab;
     [SerializeField]
     private GameObject player;
-    public int bulletpower = 10; 
+    public int bulletpower = 10;
+    [SerializeField]
+    private elementtype elementtype;
+    public elementtype Elementtype { get => elementtype; set => elementtype = value; }
     // Start is called before the first frame update
     void Start()
     {
