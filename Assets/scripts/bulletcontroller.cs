@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class bulletcontroller : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject effectprefab;
+    //[SerializeField]
+    //private GameObject effectprefab;
     [SerializeField]
     private GameObject player;
     public int bulletpower = 10;
@@ -33,8 +33,9 @@ public class bulletcontroller : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject effect = Instantiate(effectprefab, transform.position, Quaternion.identity);
-        Destroy(effect, 1.0f);
+        //GameObject effect = Instantiate(effectprefab, transform.position, Quaternion.identity);
+        //Destroy(effect, 1.0f);
+        effectmanager.instance.playeffect(transform, elementtype == elementtype.fire ? effecttype.fireeffect : effecttype.iceeffect, 1.0f);
         Destroy(gameObject);
     }
 }
