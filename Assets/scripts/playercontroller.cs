@@ -7,15 +7,22 @@ public class playercontroller : MonoBehaviour
     private Rigidbody2D Rb;
     [SerializeField] float movespeed = 0f;
     private float x;
+    private playerHP playerHP;
     // Start is called before the first frame update
     void Start()
     {
         TryGetComponent(out Rb);
+        TryGetComponent(out playerHP);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (playerHP.IsGameOver == true)
+        {
+            Rb.velocity = Vector2.zero;
+            return;
+        }
         x = Input.GetAxis("Horizontal");
         //x = Input.GetAxisRaw("Horizontal");
     }
