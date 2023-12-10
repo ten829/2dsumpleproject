@@ -6,7 +6,7 @@ public class fireitem : itembase
 {
     protected override void getitem()
     {
-        pointmanager.instance.Addfirepoint(point);
+        pointmanager.instance.calcfirepoint(point);
         base.getitem();
     }
 }

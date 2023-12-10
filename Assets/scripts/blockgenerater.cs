@@ -9,6 +9,8 @@ public class blockgenerater : MonoBehaviour
     public GameObject blockprefab;
     public Transform generatepositionfoot;
     public bool IsblockOn;
+    public pointmanager pointmanager;
+    public int requirepoint = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +24,15 @@ public class blockgenerater : MonoBehaviour
         {
             return;
         }
-
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(pointmanager.icepoint < requirepoint)
         {
-            
+            return;
+        }
+        if(Input.GetKeyDown(KeyCode.Z) && pointmanager.instance.playerelementtype == elementtype.ice)
+        {
             generateblock();
+            pointmanager.calcicepoint(-requirepoint);
+
         }
     }
 

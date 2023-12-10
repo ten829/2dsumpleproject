@@ -24,14 +24,24 @@ public class slidercontroller : MonoBehaviour
       
         
     }
-    public void setupslidervalue(int defaultvalue)
+    public void setupslidervalue(int defaultmaxvalue)
     {
-        slider.maxValue = defaultvalue;
+        slider.maxValue = defaultmaxvalue;
         //slider.value = defaultvalue;
-        slider.DOValue(defaultvalue, 0.5f);
+        slider.DOValue(defaultmaxvalue, 0.5f);
         //text.text = $"{slider.value} / {slider.maxValue}";
 
-        text.DOCounter(0, (int)slider.maxValue, 0.5f);
+        text?.DOCounter(0, (int)slider.maxValue, 0.5f);
+        textmaxvalue.text = $"/ {slider.maxValue}";
+    }
+    public void setuppointslidervalue(int defaultmaxvalue,int currentvalue)
+    {
+        slider.maxValue = defaultmaxvalue;
+        //slider.value = defaultvalue;
+        slider.DOValue(currentvalue, 0.5f);
+        //text.text = $"{slider.value} / {slider.maxValue}";
+
+        text?.DOCounter(0, currentvalue, 0.5f);
         textmaxvalue.text = $"/ {slider.maxValue}";
     }
     public void updateslidervalue(int newvalue)

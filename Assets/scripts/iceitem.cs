@@ -6,7 +6,7 @@ public class iceitem : itembase
 {
     protected override void getitem()
     {
-        pointmanager.instance.Addicepoint(point);
+        pointmanager.instance.calcicepoint(point);
         base.getitem();
     }
 }
