@@ -9,9 +9,13 @@ public class bulletgenerater : MonoBehaviour
     [SerializeField]
     private bulletcontroller IceBullet;
     [SerializeField]
+    private penetratebulletcontroller penetrationbullet;
+    [SerializeField]
     private GameObject generateposition;
     [SerializeField]
     private float bulletspeed;
+    [SerializeField]
+    public int extrarequirepoint = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -22,17 +26,23 @@ public class bulletgenerater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-        if (Input.GetKeyDown(KeyCode.Z) && pointmanager.instance.playerelementtype == elementtype.fire)
-        {
-            generatepenetratebullet();
 
-        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             
             generatebullet();
         }
+        if (pointmanager.instance.firepoint < extrarequirepoint)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Z) && pointmanager.instance.playerelementtype == elementtype.fire)
+        {
+            generatepenetratebullet();
+            pointmanager.instance.calcfirepoint(-extrarequirepoint);
+
+        }
+        
         
     }
     
@@ -46,5 +56,7 @@ public class bulletgenerater : MonoBehaviour
     private void generatepenetratebullet()
     {
         //新しく貫通弾用のプレハブを作って生成
+        penetratebulletcontroller bullet = Instantiate(penetrationbullet, generateposition.transform.position, Quaternion.identity);
+        bullet.Shoot(new Vector2(-transform.localScale.x, 0) * bulletspeed);
     }
 }

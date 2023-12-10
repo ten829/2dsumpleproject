@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bulletcontroller : MonoBehaviour
+public class bulletcontroller : MonoBehaviour //親クラス
 {
     //[SerializeField]
     //private GameObject effectprefab;
@@ -10,7 +10,7 @@ public class bulletcontroller : MonoBehaviour
     private GameObject player;
     public int bulletpower = 10;
     [SerializeField]
-    private elementtype elementtype;
+    public elementtype elementtype;
     public elementtype Elementtype { get => elementtype; set => elementtype = value; }
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class bulletcontroller : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         //GameObject effect = Instantiate(effectprefab, transform.position, Quaternion.identity);
         //Destroy(effect, 1.0f);

@@ -23659,8 +23659,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireBullet: {fileID: 6712372799240409360, guid: 059fa4b406e0945478d87a34022c42f0, type: 3}
   IceBullet: {fileID: 6712372799240409360, guid: 76e2c6c4780ff463f99ec6e5f5a128f2, type: 3}
+  penetrationbullet: {fileID: 3577238779835560998, guid: ca216f7ae4baf4752b933a9396ff321d, type: 3}
   generateposition: {fileID: 2017860760}
   bulletspeed: 1000
+  extrarequirepoint: 10
 --- !u!114 &1196066071
 MonoBehaviour:
   m_ObjectHideFlags: 0
