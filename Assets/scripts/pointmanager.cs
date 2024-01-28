@@ -17,6 +17,8 @@ public class pointmanager : MonoBehaviour
     public int icemaxpoint;
     [SerializeField]
     public elementtype playerelementtype;
+    [SerializeField]
+    private chengeskillicon chengeskillicon;
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,6 +37,7 @@ public class pointmanager : MonoBehaviour
     {
         fireslidercontroller.setuppointslidervalue(firemaxpoint,firepoint);
         iceslidercontroller.setuppointslidervalue(icemaxpoint,icepoint);
+        chengeskillicon.changeicon(playerelementtype);
     }
     private void Update()
     {
@@ -47,6 +50,7 @@ public class pointmanager : MonoBehaviour
     private void switchelementtype()
     {
         playerelementtype = playerelementtype == elementtype.fire ? elementtype.ice : elementtype.fire; //三項演算子
+        chengeskillicon.changeicon(playerelementtype);
     }
 
     public void calcfirepoint(int point)

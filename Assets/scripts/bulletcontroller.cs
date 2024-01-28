@@ -28,7 +28,7 @@ public class bulletcontroller : MonoBehaviour //親クラス
     public void Shoot(Vector2 direction)
     {
         GetComponent<Rigidbody2D>().AddForce(direction);
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 1f);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
